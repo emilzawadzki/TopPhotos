@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="21701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21679"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="iN0-l3-epB" customClass="FilterControlView" customModule="TopPhotos" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="393" height="150"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="L4s-eO-TzQ">
+                    <rect key="frame" x="0.0" y="0.0" width="393" height="150"/>
+                    <subviews>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="&lt;Filter category&gt;" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Chi-rg-1dT">
+                            <rect key="frame" x="20" y="65" width="353" height="20.333333333333329"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <nil key="textColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                    </subviews>
+                    <color key="backgroundColor" name="ButtonBackground"/>
+                    <constraints>
+                        <constraint firstItem="Chi-rg-1dT" firstAttribute="leading" secondItem="L4s-eO-TzQ" secondAttribute="leading" constant="20" id="9Wo-v1-ioE"/>
+                        <constraint firstItem="Chi-rg-1dT" firstAttribute="centerX" secondItem="L4s-eO-TzQ" secondAttribute="centerX" id="Bj8-t2-Vtr"/>
+                        <constraint firstAttribute="trailing" secondItem="Chi-rg-1dT" secondAttribute="trailing" constant="20" id="IjW-uO-4lG"/>
+                        <constraint firstItem="Chi-rg-1dT" firstAttribute="centerY" secondItem="L4s-eO-TzQ" secondAttribute="centerY" id="q0E-6g-lne"/>
+                    </constraints>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                            <integer key="value" value="20"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
+                </view>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QaI-Jb-ao6">
+                    <rect key="frame" x="0.0" y="0.0" width="393" height="150"/>
+                    <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                    <connections>
+                        <action selector="categoryTap:" destination="iN0-l3-epB" eventType="touchUpInside" id="8jz-ZV-a0Z"/>
+                        <action selector="filterButtonTouchDown:" destination="iN0-l3-epB" eventType="touchDown" id="ccW-2y-gpf"/>
+                        <action selector="filterButtonTouchUp:" destination="iN0-l3-epB" eventType="touchCancel" id="2qx-C3-55k"/>
+                        <action selector="filterButtonTouchUp:" destination="iN0-l3-epB" eventType="touchUpOutside" id="AtO-ds-CcI"/>
+                        <action selector="filterButtonTouchUp:" destination="iN0-l3-epB" eventType="touchUpInside" id="Rm1-2a-D6U"/>
+                    </connections>
+                </button>
+            </subviews>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <constraints>
+                <constraint firstAttribute="trailing" secondItem="L4s-eO-TzQ" secondAttribute="trailing" id="4pv-xV-LhD"/>
+                <constraint firstItem="L4s-eO-TzQ" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="ByJ-Ff-9xT"/>
+                <constraint firstAttribute="bottom" secondItem="QaI-Jb-ao6" secondAttribute="bottom" id="FCz-Pm-RA2"/>
+                <constraint firstItem="L4s-eO-TzQ" firstAttribute="bottom" secondItem="iN0-l3-epB" secondAttribute="bottom" id="Riq-PP-8AV"/>
+                <constraint firstItem="QaI-Jb-ao6" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="ZMS-Bv-Ke0"/>
+                <constraint firstItem="L4s-eO-TzQ" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="kxA-l6-9Fh"/>
+                <constraint firstAttribute="trailing" secondItem="QaI-Jb-ao6" secondAttribute="trailing" id="oe0-sk-z7G"/>
+                <constraint firstItem="QaI-Jb-ao6" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="tsm-cF-9Up"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <connections>
+                <outlet property="backgroundView" destination="L4s-eO-TzQ" id="mns-1X-IDN"/>
+                <outlet property="filterNameLabel" destination="Chi-rg-1dT" id="3I2-DS-Nf3"/>
+            </connections>
+            <point key="canvasLocation" x="-79" y="21"/>
+        </view>
+    </objects>
+    <resources>
+        <namedColor name="ButtonBackground">
+            <color red="0.79607843137254897" green="0.79607843137254897" blue="0.79607843137254897" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+    </resources>
+</document>
