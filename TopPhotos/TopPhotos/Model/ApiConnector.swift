@@ -78,7 +78,7 @@ class ApiConnector {
 		
 	}
 	
-	private func parsePhotos(from data: Data?) -> [PhotoModel]? {
+	func parsePhotos(from data: Data?) -> [PhotoModel]? {
 		guard let jsonData = data else { return nil }
 		let decoder = JSONDecoder()
 		let photosList = try? decoder.decode([PhotoModel].self, from: jsonData)
@@ -86,7 +86,7 @@ class ApiConnector {
 		return photosList
 	}
 	
-	private func parsePhotoDetails(from data: Data?) -> PhotoDetailsModel? {
+	func parsePhotoDetails(from data: Data?) -> PhotoDetailsModel? {
 		guard let jsonData = data else { return nil }
 		let decoder = JSONDecoder()
 		let photosList = try? decoder.decode(PhotoDetailsModel.self, from: jsonData)
@@ -122,7 +122,7 @@ class ApiConnector {
 		
 	}
 	
-	private func parseTopics(from data: Data?) -> [TopicModel]? {
+	func parseTopics(from data: Data?) -> [TopicModel]? {
 		guard let jsonData = data else { return nil }
 		let decoder = JSONDecoder()
 		let photosList = try? decoder.decode([TopicModel].self, from: jsonData)
