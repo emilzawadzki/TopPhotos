@@ -11,4 +11,5 @@ protocol BaseViewProtocol: AnyObject {
 	func showLoadingPopup()
 	func hideLoadingPopup()
 	func showSimpleError(_ errorText: String)
+	func showInfoPopup(_ info: String)
 }

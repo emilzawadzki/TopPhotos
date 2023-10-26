@@ -12,7 +12,8 @@ class DetailsPresenter: BasePresenter {
 	
 	private weak var view : DetailsViewProtocol?
 	private var photoModel: PhotoModel
-	
+	private var loadedImage: UIImage?
+	private var imageSaver: ImageSaver?
 	
 	init(view: DetailsViewProtocol, photoModel: PhotoModel) {
 		self.view = view
@@ -37,6 +38,7 @@ class DetailsPresenter: BasePresenter {
 						if let data = try? Data(contentsOf: url) {
 							DispatchQueue.main.async {
 								if let image = UIImage(data: data) {
+									self?.loadedImage = image
 									self?.view?.showBigPicture(image: image)
 								}
 							}
@@ -47,9 +49,25 @@ class DetailsPresenter: BasePresenter {
 				}
 			}
 		})
+		
+		imageSaver = ImageSaver(completionBlock: { [weak self] success in
+			if success {
+				self?.view?.showInfoPopup("Saving successfull")
+			} else {
+				self?.view?.showSimpleError("Saving failed")
+			}
+		})
 	}
 	
 	func closeButtonTapped() {
 		view?.closeView()
 	}
+	
+	func saveToPhotosButtonTapped() {
+		guard let loadedImage else {
+			return
+		}
+		imageSaver?.saveInPhotosAlbum(image: loadedImage)
+	}
+	
 }

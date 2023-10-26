@@ -33,6 +33,7 @@
 		20F7A85B2AEAE19D00F14173 /* FilterControlView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20F7A85A2AEAE19D00F14173 /* FilterControlView.swift */; };
 		20F7A85D2AEAE1B000F14173 /* FilterControlView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 20F7A85C2AEAE1B000F14173 /* FilterControlView.xib */; };
 		20F7A8622AEAEC0100F14173 /* UIView+FromNib.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20F7A8612AEAEC0100F14173 /* UIView+FromNib.swift */; };
+		20F7A8642AEAFCCA00F14173 /* ImageSaver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20F7A8632AEAFCCA00F14173 /* ImageSaver.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -83,6 +84,7 @@
 		20F7A85A2AEAE19D00F14173 /* FilterControlView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterControlView.swift; sourceTree = "<group>"; };
 		20F7A85C2AEAE1B000F14173 /* FilterControlView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FilterControlView.xib; sourceTree = "<group>"; };
 		20F7A8612AEAEC0100F14173 /* UIView+FromNib.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+FromNib.swift"; sourceTree = "<group>"; };
+		20F7A8632AEAFCCA00F14173 /* ImageSaver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageSaver.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -201,6 +203,7 @@
 				20F7A8532AE9C53000F14173 /* PhotoDetailsModel.swift */,
 				20F7A8552AE9C5C400F14173 /* UserModel.swift */,
 				20F7A8572AE9D97900F14173 /* TopicModel.swift */,
+				20F7A8632AEAFCCA00F14173 /* ImageSaver.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -379,6 +382,7 @@
 				20F7A8482AE9B02B00F14173 /* BasePresenter.swift in Sources */,
 				20F7A80A2AE99A1200F14173 /* ListVC.swift in Sources */,
 				20F7A83E2AE9A06F00F14173 /* ApiConnector.swift in Sources */,
+				20F7A8642AEAFCCA00F14173 /* ImageSaver.swift in Sources */,
 				20F7A84E2AE9BB7B00F14173 /* DetailsViewProtocol.swift in Sources */,
 				20F7A8542AE9C53000F14173 /* PhotoDetailsModel.swift in Sources */,
 				20F7A84C2AE9B1A700F14173 /* ListViewProtocol.swift in Sources */,

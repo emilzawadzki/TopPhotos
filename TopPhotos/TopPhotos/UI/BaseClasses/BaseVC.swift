@@ -66,8 +66,14 @@ class BaseVC<T: BasePresenter>: UIViewController, BaseViewProtocol {
 	}
 	
 	func showSimpleError(_ errorText: String) {
-		let alert = UIAlertController(title: nil, message: errorText, preferredStyle: .alert)
-		alert.addAction(UIAlertAction(title: "Error", style: .default, handler: nil))
+		let alert = UIAlertController(title: "Error", message: errorText, preferredStyle: .alert)
+		alert.addAction(UIAlertAction(title: "Retry", style: .default, handler: nil))
+		self.present(alert, animated: true, completion: nil)
+	}
+	
+	func showInfoPopup(_ info: String) {
+		let alert = UIAlertController(title: nil, message: info, preferredStyle: .alert)
+		alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
 		self.present(alert, animated: true, completion: nil)
 	}
 }

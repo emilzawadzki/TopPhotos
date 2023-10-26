@@ -40,5 +40,8 @@ class DetailsVC: BaseVC<DetailsPresenter>, DetailsViewProtocol {
 		dismiss(animated: true)
 	}
 	
+	@IBAction func saveToPhotosButtonTapped(_ sender: Any) {
+		presenter?.saveToPhotosButtonTapped()
+	}
 	
 }

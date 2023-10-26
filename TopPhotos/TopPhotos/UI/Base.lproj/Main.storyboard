@@ -166,7 +166,7 @@
                                 </constraints>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Zal-nM-O88">
-                                <rect key="frame" x="306" y="59" width="67" height="34.333333333333343"/>
+                                <rect key="frame" x="306" y="79" width="67" height="34.333333333333343"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="filled" title="Close">
                                     <color key="baseForegroundColor" name="BackgroundCommon"/>
@@ -177,7 +177,7 @@
                                 </connections>
                             </button>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="CTh-Wa-S2c">
-                                <rect key="frame" x="20" y="474" width="353" height="101"/>
+                                <rect key="frame" x="20" y="473.99999999999994" width="353" height="165.33333333333331"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HBK-EL-roH">
                                         <rect key="frame" x="0.0" y="0.0" width="353" height="20.333333333333332"/>
@@ -211,6 +211,24 @@
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dmr-TE-Oh1">
+                                        <rect key="frame" x="0.0" y="101" width="353" height="30"/>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="30" id="d2K-y2-wmy"/>
+                                        </constraints>
+                                    </view>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="in6-Ex-685">
+                                        <rect key="frame" x="0.0" y="131" width="353" height="34.333333333333343"/>
+                                        <state key="normal" title="Button"/>
+                                        <buttonConfiguration key="configuration" style="filled" title="Save to photos">
+                                            <color key="baseForegroundColor" name="BackgroundCommon"/>
+                                            <color key="baseBackgroundColor" name="TextCommon"/>
+                                        </buttonConfiguration>
+                                        <connections>
+                                            <action selector="saveToPhotosButtonTapped:" destination="Sjh-DX-1ED" eventType="touchUpInside" id="5cq-Re-CCx"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                             </stackView>
                         </subviews>
@@ -218,7 +236,7 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="CTh-Wa-S2c" firstAttribute="leading" secondItem="EQb-i4-qfv" secondAttribute="leading" constant="20" id="J2L-5a-jwe"/>
-                            <constraint firstItem="Zal-nM-O88" firstAttribute="top" secondItem="EQb-i4-qfv" secondAttribute="top" id="K5V-hD-xz3"/>
+                            <constraint firstItem="Zal-nM-O88" firstAttribute="top" secondItem="EQb-i4-qfv" secondAttribute="top" constant="20" id="K5V-hD-xz3"/>
                             <constraint firstItem="EQb-i4-qfv" firstAttribute="trailing" secondItem="Zal-nM-O88" secondAttribute="trailing" constant="20" id="Tl7-We-Tv7"/>
                             <constraint firstItem="eea-j1-4Y3" firstAttribute="centerX" secondItem="KxI-5S-wCc" secondAttribute="centerX" id="WMN-yV-1rk"/>
                             <constraint firstItem="CTh-Wa-S2c" firstAttribute="top" secondItem="eea-j1-4Y3" secondAttribute="bottom" constant="60" id="gyt-Tw-2LE"/>
