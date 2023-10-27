@@ -11,33 +11,36 @@ private let cellReuseIdentifier = "photoMiniCell"
 
 class ListVC: BaseVC<ListPresenter>, ListViewProtocol, UICollectionViewDelegate, UICollectionViewDataSource {
 
-	@IBOutlet var collectionView: UICollectionView!
-	@IBOutlet var filterStackView: UIStackView!
+	@IBOutlet weak var collectionView: UICollectionView?
+	@IBOutlet weak var filterStackView: UIStackView?
 	
 	override func viewDidLoad() {
 		super.viewDidLoad()
 		
-		filterStackView.arrangedSubviews.forEach { view in
+		filterStackView?.arrangedSubviews.forEach { view in
 			view.removeFromSuperview()
 		}
 	}
 	
 	func reloadList() {
 		//TODO: add animation
-		collectionView.isHidden = false
-		collectionView.reloadData()
+		collectionView?.isHidden = false
+		collectionView?.reloadData()
 	}
 	
 	func scrollToTop() {
-		collectionView.setContentOffset(CGPoint(x:0, y:0), animated: true)
+		collectionView?.setContentOffset(CGPoint(x:0, y:0), animated: true)
 	}
 	
 	func showEmptyScreen() {
 		//TODO: add animation
-		collectionView.isHidden = true
+		collectionView?.isHidden = true
 	}
 	
 	func showFilters(_ filters: [String]) {
+		guard let filterStackView else {
+			return
+		}
 		filterStackView.arrangedSubviews.forEach { view in
 			view.removeFromSuperview()
 		}
@@ -53,6 +56,9 @@ class ListVC: BaseVC<ListPresenter>, ListViewProtocol, UICollectionViewDelegate,
 	}
 	
 	func showFilterAsSelected(filterIndex: Int) {
+		guard let filterStackView else {
+			return
+		}
 		var index = 0
 		for case let filterView as FilterControlView in filterStackView.arrangedSubviews {
 			filterView.showAsSelected(index == filterIndex)

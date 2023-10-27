@@ -9,7 +9,7 @@ import Foundation
 
 class BasePresenter {
 	
-	internal let apiConnector = ApiConnector()
+	internal var apiConnector: ApiConnectorProtocol = ApiConnector()
 	
 	func onViewDidLoad() {
 		

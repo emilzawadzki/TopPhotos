@@ -35,6 +35,9 @@
 		20F7A8622AEAEC0100F14173 /* UIView+FromNib.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20F7A8612AEAEC0100F14173 /* UIView+FromNib.swift */; };
 		20F7A8642AEAFCCA00F14173 /* ImageSaver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20F7A8632AEAFCCA00F14173 /* ImageSaver.swift */; };
 		20F7A8662AEB032900F14173 /* DataParserTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20F7A8652AEB032900F14173 /* DataParserTests.swift */; };
+		20F7A8682AEBEAA100F14173 /* PhotosListTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20F7A8672AEBEAA100F14173 /* PhotosListTests.swift */; };
+		20F7A86A2AEBF1A800F14173 /* ApiConnectorProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20F7A8692AEBF1A800F14173 /* ApiConnectorProtocol.swift */; };
+		20F7A86D2AEC067B00F14173 /* MockedApiConnector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20F7A86C2AEC067B00F14173 /* MockedApiConnector.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -87,6 +90,9 @@
 		20F7A8612AEAEC0100F14173 /* UIView+FromNib.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+FromNib.swift"; sourceTree = "<group>"; };
 		20F7A8632AEAFCCA00F14173 /* ImageSaver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageSaver.swift; sourceTree = "<group>"; };
 		20F7A8652AEB032900F14173 /* DataParserTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataParserTests.swift; sourceTree = "<group>"; };
+		20F7A8672AEBEAA100F14173 /* PhotosListTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotosListTests.swift; sourceTree = "<group>"; };
+		20F7A8692AEBF1A800F14173 /* ApiConnectorProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiConnectorProtocol.swift; sourceTree = "<group>"; };
+		20F7A86C2AEC067B00F14173 /* MockedApiConnector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockedApiConnector.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -151,8 +157,10 @@
 		20F7A81B2AE99A1300F14173 /* TopPhotosTests */ = {
 			isa = PBXGroup;
 			children = (
+				20F7A86B2AEC066F00F14173 /* Mocks */,
 				20F7A81C2AE99A1300F14173 /* ApiTests.swift */,
 				20F7A8652AEB032900F14173 /* DataParserTests.swift */,
+				20F7A8672AEBEAA100F14173 /* PhotosListTests.swift */,
 			);
 			path = TopPhotosTests;
 			sourceTree = "<group>";
@@ -207,6 +215,7 @@
 				20F7A8552AE9C5C400F14173 /* UserModel.swift */,
 				20F7A8572AE9D97900F14173 /* TopicModel.swift */,
 				20F7A8632AEAFCCA00F14173 /* ImageSaver.swift */,
+				20F7A8692AEBF1A800F14173 /* ApiConnectorProtocol.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -246,6 +255,14 @@
 				20F7A8612AEAEC0100F14173 /* UIView+FromNib.swift */,
 			);
 			path = Extensions;
+			sourceTree = "<group>";
+		};
+		20F7A86B2AEC066F00F14173 /* Mocks */ = {
+			isa = PBXGroup;
+			children = (
+				20F7A86C2AEC067B00F14173 /* MockedApiConnector.swift */,
+			);
+			path = Mocks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -393,6 +410,7 @@
 				20F7A8402AE9A95800F14173 /* PhotoModel.swift in Sources */,
 				20F7A84A2AE9B0C600F14173 /* BaseViewProtocol.swift in Sources */,
 				20F7A8432AE9B00000F14173 /* ListPresenter.swift in Sources */,
+				20F7A86A2AEBF1A800F14173 /* ApiConnectorProtocol.swift in Sources */,
 				20F7A8462AE9B02000F14173 /* BaseVC.swift in Sources */,
 				20F7A8582AE9D97900F14173 /* TopicModel.swift in Sources */,
 				20F7A8062AE99A1200F14173 /* AppDelegate.swift in Sources */,
@@ -407,8 +425,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				20F7A8682AEBEAA100F14173 /* PhotosListTests.swift in Sources */,
 				20F7A8662AEB032900F14173 /* DataParserTests.swift in Sources */,
 				20F7A81D2AE99A1300F14173 /* ApiTests.swift in Sources */,
+				20F7A86D2AEC067B00F14173 /* MockedApiConnector.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -16,9 +16,9 @@ class ListPresenter: BasePresenter, FilterViewDelegate {
 	private weak var view : ListViewProtocol?
 	
 	private var photos: [PhotoModel]?
-	private var topics: [TopicModel]?
-	private var selectedTopic: TopicModel?
-	private var photosPage = firstPageIndex
+	private(set) var topics: [TopicModel]?
+	private(set) var selectedTopic: TopicModel?
+	private(set) var photosPage = firstPageIndex
 	
 	private var viewDidAlreadyAppeared = false
 	
@@ -44,7 +44,7 @@ class ListPresenter: BasePresenter, FilterViewDelegate {
 		let group = DispatchGroup()
 		group.enter()
 		var photosError: Error?
-		apiConnector.getPhotos(completion: { [weak self] photos, error in
+		apiConnector.getPhotos(topicID: nil, page: photosPage, completion: { [weak self] photos, error in
 			if let error {
 				photosError = error
 			} else {
@@ -151,7 +151,7 @@ class ListPresenter: BasePresenter, FilterViewDelegate {
 		getMorePhotos()
 	}
 	
-	private func getMorePhotos() {
+	func getMorePhotos() {
 		view?.showLoadingPopup()
 		apiConnector.getPhotos(topicID: selectedTopic?.id, page: photosPage, completion: { [weak self] photos, error in
 			if let error {

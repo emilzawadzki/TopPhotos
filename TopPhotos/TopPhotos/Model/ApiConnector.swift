@@ -12,7 +12,7 @@ enum ApiErrors: Error {
 	case NoPhotos
 }
 
-class ApiConnector {
+class ApiConnector: ApiConnectorProtocol {
 	
 	private var session = URLSession.shared
 	
@@ -78,7 +78,7 @@ class ApiConnector {
 		
 	}
 	
-	func parsePhotos(from data: Data?) -> [PhotoModel]? {
+	public func parsePhotos(from data: Data?) -> [PhotoModel]? {
 		guard let jsonData = data else { return nil }
 		let decoder = JSONDecoder()
 		let photosList = try? decoder.decode([PhotoModel].self, from: jsonData)
@@ -86,7 +86,7 @@ class ApiConnector {
 		return photosList
 	}
 	
-	func parsePhotoDetails(from data: Data?) -> PhotoDetailsModel? {
+	public func parsePhotoDetails(from data: Data?) -> PhotoDetailsModel? {
 		guard let jsonData = data else { return nil }
 		let decoder = JSONDecoder()
 		let photosList = try? decoder.decode(PhotoDetailsModel.self, from: jsonData)

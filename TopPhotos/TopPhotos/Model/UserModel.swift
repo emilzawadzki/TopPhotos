@@ -7,7 +7,7 @@
 
 import Foundation
 
-public class UserModel: Codable, Identifiable {
+public struct UserModel: Codable, Identifiable {
 	public var id: String
 	public var name: String
 }
