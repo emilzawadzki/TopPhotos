@@ -67,7 +67,7 @@ class ListPresenter: BasePresenter, FilterViewDelegate {
 			self.view?.hideLoadingPopup()
 			if let photosError {
 				//TODO: add string to the error
-				self.view?.showSimpleError("Error")
+				self.view?.showSimpleError("Error", cancellable: false)
 			} else if let photos = self.photos, photos.count > 0 {
 				self.view?.reloadList()
 			} else {

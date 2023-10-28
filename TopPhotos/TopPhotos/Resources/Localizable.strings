@@ -12,4 +12,13 @@
 "ErrorNoContent" = "Empty content";
 
 "ButtonRetry" = "Retry";
+"ButtonCancel" = "Cancel";
 "ButtonOK" = "OK";
+"ButtonClose" = "Close";
+"ButtonSave" = "Save to photos";
+
+"Author" = "Author";
+"MissingDescription" = "Missing description";
+
+"ImageSaveSuccess" = "Image saved";
+"ImageSaveFailure" = "Image save failed";

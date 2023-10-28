@@ -28,7 +28,6 @@ final class PhotosListTests: XCTestCase {
 		guard let listPresenter else {
 			return
 		}
-		//TODO: add mocked api connector
 		listPresenter.onViewDidAppear()
 		sleep(1)
 		

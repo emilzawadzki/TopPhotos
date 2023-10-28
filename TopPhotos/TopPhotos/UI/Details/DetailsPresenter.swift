@@ -21,42 +21,63 @@ class DetailsPresenter: BasePresenter {
 		super.init()
 	}
 	
+	override func onViewDidLoad() {
+		super.onViewDidLoad()
+		imageSaver = ImageSaver(completionBlock: { [weak self] success in
+			if success {
+				self?.view?.showInfoPopup("ImageSaveSuccess".localized())
+			} else {
+				self?.view?.showSimpleError("ImageSaveFailure".localized(), cancellable: true)
+			}
+		})
+	}
+	
 	override func onViewDidAppear() {
 		super.onViewDidAppear()
+		loadDetails()
+	}
+	
+	private func loadDetails() {
 		view?.showLoadingPopup()
 		apiConnector.getPhotoDetails(id:photoModel.id, completion: { [weak self] photoDetails, error in
 			DispatchQueue.main.async {
 				self?.view?.hideLoadingPopup()
 				if let error {
-					self?.view?.showSimpleError("Error")
+					self?.view?.showSimpleError(error.customMessage, cancellable: true)
 				} else if let photoDetails {
-					self?.view?.showDetails(description: photoDetails.description ?? "missing description", author: photoDetails.user.name)
-					guard let imagePath = photoDetails.bigImagePath, let url = URL(string: imagePath) else {
-						return
-					}
-					DispatchQueue.global().async {
-						if let data = try? Data(contentsOf: url) {
-							DispatchQueue.main.async {
-								if let image = UIImage(data: data) {
-									self?.loadedImage = image
-									self?.view?.showBigPicture(image: image)
-								}
-							}
-						}
-					}
+					self?.view?.showDetails(description: photoDetails.description ?? "MissingDescription".localized(), author: photoDetails.user.name)
+					self?.loadImage(imagePath: photoDetails.bigImagePath)
 				} else {
-					self?.view?.showSimpleError("Error")
+					self?.view?.showSimpleError(TopPhotosError.NoContent.customMessage, cancellable: true)
 				}
 			}
 		})
-		
-		imageSaver = ImageSaver(completionBlock: { [weak self] success in
-			if success {
-				self?.view?.showInfoPopup("Saving successfull")
-			} else {
-				self?.view?.showSimpleError("Saving failed")
+	}
+	
+	private func loadImage(imagePath : String?) {
+		guard let imagePath, let url = URL(string: imagePath) else {
+			return
+		}
+		DispatchQueue.global().async {
+			if let data = try? Data(contentsOf: url) {
+				DispatchQueue.main.async { [weak self] in
+					if let image = UIImage(data: data) {
+						self?.loadedImage = image
+						self?.view?.showBigPicture(image: image)
+					}
+				}
 			}
-		})
+		}
+	}
+	
+	override func onRetryTapped() {
+		super.onRetryTapped()
+		loadDetails()
+	}
+	
+	override func onCancelTapped() {
+		super.onCancelTapped()
+		closeButtonTapped()
 	}
 	
 	func closeButtonTapped() {
@@ -65,6 +86,7 @@ class DetailsPresenter: BasePresenter {
 	
 	func saveToPhotosButtonTapped() {
 		guard let loadedImage else {
+			view?.showSimpleError("ImageSaveFailure".localized(), cancellable: true)
 			return
 		}
 		imageSaver?.saveInPhotosAlbum(image: loadedImage)

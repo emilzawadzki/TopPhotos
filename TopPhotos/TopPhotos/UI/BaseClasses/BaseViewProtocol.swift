@@ -10,6 +10,6 @@ import Foundation
 protocol BaseViewProtocol: AnyObject {
 	func showLoadingPopup()
 	func hideLoadingPopup()
-	func showSimpleError(_ errorText: String)
+	func showSimpleError(_ errorText: String, cancellable: Bool)
 	func showInfoPopup(_ info: String)
 }

@@ -166,64 +166,70 @@
                                 </constraints>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Zal-nM-O88">
-                                <rect key="frame" x="306" y="79" width="67" height="34.333333333333343"/>
+                                <rect key="frame" x="306" y="79" width="67" height="40"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="d8F-Ao-F7o"/>
+                                </constraints>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="filled" title="Close">
-                                    <color key="baseForegroundColor" name="BackgroundCommon"/>
-                                    <color key="baseBackgroundColor" name="TextCommon"/>
+                                    <color key="baseForegroundColor" name="TextButtons"/>
+                                    <color key="baseBackgroundColor" name="ButtonBackground"/>
                                 </buttonConfiguration>
                                 <connections>
                                     <action selector="closeButtonTapped:" destination="Sjh-DX-1ED" eventType="touchUpInside" id="xr0-df-vmV"/>
                                 </connections>
                             </button>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="CTh-Wa-S2c">
-                                <rect key="frame" x="20" y="473.99999999999994" width="353" height="165.33333333333331"/>
+                                <rect key="frame" x="30" y="474" width="333" height="171"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HBK-EL-roH">
-                                        <rect key="frame" x="0.0" y="0.0" width="353" height="20.333333333333332"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="333" height="20.333333333333332"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <nil key="textColor"/>
+                                        <color key="textColor" name="TextCommon"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="sjr-Ex-2SJ">
-                                        <rect key="frame" x="0.0" y="20.333333333333314" width="353" height="30"/>
+                                        <rect key="frame" x="0.0" y="20.333333333333314" width="333" height="30"/>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="30" id="3eP-iU-gfc"/>
                                         </constraints>
                                     </view>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Author" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Yz3-nW-mse">
-                                        <rect key="frame" x="0.0" y="50.333333333333371" width="353" height="20.333333333333329"/>
+                                        <rect key="frame" x="0.0" y="50.333333333333371" width="333" height="20.333333333333329"/>
                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
-                                        <nil key="textColor"/>
+                                        <color key="textColor" name="TextCommon"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="RUj-dl-xPa">
-                                        <rect key="frame" x="0.0" y="70.666666666666629" width="353" height="10"/>
+                                        <rect key="frame" x="0.0" y="70.666666666666629" width="333" height="10"/>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="10" id="RXM-te-Foo"/>
                                         </constraints>
                                     </view>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dvg-aY-1Ub">
-                                        <rect key="frame" x="0.0" y="80.666666666666629" width="353" height="20.333333333333329"/>
+                                        <rect key="frame" x="0.0" y="80.666666666666629" width="333" height="20.333333333333329"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <nil key="textColor"/>
+                                        <color key="textColor" name="TextCommon"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dmr-TE-Oh1">
-                                        <rect key="frame" x="0.0" y="101" width="353" height="30"/>
+                                        <rect key="frame" x="0.0" y="101" width="333" height="30"/>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="30" id="d2K-y2-wmy"/>
                                         </constraints>
                                     </view>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="in6-Ex-685">
-                                        <rect key="frame" x="0.0" y="131" width="353" height="34.333333333333343"/>
+                                        <rect key="frame" x="0.0" y="131" width="333" height="40"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="40" id="ELb-cY-Boc"/>
+                                        </constraints>
                                         <state key="normal" title="Button"/>
                                         <buttonConfiguration key="configuration" style="filled" title="Save to photos">
-                                            <color key="baseForegroundColor" name="BackgroundCommon"/>
-                                            <color key="baseBackgroundColor" name="TextCommon"/>
+                                            <color key="baseForegroundColor" name="TextButtons"/>
+                                            <color key="baseBackgroundColor" name="ButtonBackground"/>
                                         </buttonConfiguration>
                                         <connections>
                                             <action selector="saveToPhotosButtonTapped:" destination="Sjh-DX-1ED" eventType="touchUpInside" id="5cq-Re-CCx"/>
@@ -235,20 +241,25 @@
                         <viewLayoutGuide key="safeArea" id="EQb-i4-qfv"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="CTh-Wa-S2c" firstAttribute="leading" secondItem="EQb-i4-qfv" secondAttribute="leading" constant="20" id="J2L-5a-jwe"/>
+                            <constraint firstItem="EQb-i4-qfv" firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="CTh-Wa-S2c" secondAttribute="bottom" constant="20" id="B12-yI-qka"/>
+                            <constraint firstItem="CTh-Wa-S2c" firstAttribute="leading" secondItem="EQb-i4-qfv" secondAttribute="leading" constant="30" id="J2L-5a-jwe"/>
                             <constraint firstItem="Zal-nM-O88" firstAttribute="top" secondItem="EQb-i4-qfv" secondAttribute="top" constant="20" id="K5V-hD-xz3"/>
                             <constraint firstItem="EQb-i4-qfv" firstAttribute="trailing" secondItem="Zal-nM-O88" secondAttribute="trailing" constant="20" id="Tl7-We-Tv7"/>
                             <constraint firstItem="eea-j1-4Y3" firstAttribute="centerX" secondItem="KxI-5S-wCc" secondAttribute="centerX" id="WMN-yV-1rk"/>
                             <constraint firstItem="CTh-Wa-S2c" firstAttribute="top" secondItem="eea-j1-4Y3" secondAttribute="bottom" constant="60" id="gyt-Tw-2LE"/>
-                            <constraint firstItem="EQb-i4-qfv" firstAttribute="trailing" secondItem="CTh-Wa-S2c" secondAttribute="trailing" constant="20" id="uLZ-cy-8xS"/>
+                            <constraint firstItem="EQb-i4-qfv" firstAttribute="trailing" secondItem="CTh-Wa-S2c" secondAttribute="trailing" constant="30" id="uLZ-cy-8xS"/>
                             <constraint firstItem="eea-j1-4Y3" firstAttribute="width" secondItem="KxI-5S-wCc" secondAttribute="width" multiplier="0.7" id="vLK-Pt-riH"/>
                             <constraint firstItem="eea-j1-4Y3" firstAttribute="top" secondItem="EQb-i4-qfv" secondAttribute="top" constant="80" id="xm7-df-qX8"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="authorLabel" destination="dvg-aY-1Ub" id="yUn-EV-Ala"/>
+                        <outlet property="authorTitleLabel" destination="Yz3-nW-mse" id="YLT-az-7JY"/>
                         <outlet property="bigImage" destination="eea-j1-4Y3" id="SZm-vg-HNg"/>
+                        <outlet property="closeButton" destination="Zal-nM-O88" id="GKe-Ai-sp6"/>
                         <outlet property="descriptionLabel" destination="HBK-EL-roH" id="O4R-SR-NwL"/>
+                        <outlet property="detailsStackView" destination="CTh-Wa-S2c" id="9EG-ow-jkZ"/>
+                        <outlet property="saveButton" destination="in6-Ex-685" id="fOx-GU-M4F"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0Sv-E8-IZT" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -258,6 +269,12 @@
     </scenes>
     <resources>
         <namedColor name="BackgroundCommon">
+            <color red="0.95294117647058818" green="0.95686274509803926" blue="0.96470588235294119" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="ButtonBackground">
+            <color red="0.056462462424797466" green="0.13953697987243102" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="TextButtons">
             <color red="0.95294117647058818" green="0.95686274509803926" blue="0.96470588235294119" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="TextCommon">

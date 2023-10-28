@@ -7,6 +7,7 @@
 
 import UIKit
 
+/// every view controller has to have presenter that is inherited form BasePresenter
 class BaseVC<T: BasePresenter>: UIViewController, BaseViewProtocol {
 	
 	var presenter: T?
@@ -48,9 +49,10 @@ class BaseVC<T: BasePresenter>: UIViewController, BaseViewProtocol {
 				return
 			}
 			let loadingSpinner = UIActivityIndicatorView(style: .large)
-			loadingSpinner.backgroundColor = UIColor(named: "TextCommon")?.withAlphaComponent(0.5)
+			loadingSpinner.backgroundColor = UIColor(named: "PopupBackground")
 			self.view.addSubview(loadingSpinner)
 			loadingSpinner.frame = self.view.bounds
+			loadingSpinner.autoresizingMask = [.flexibleHeight, .flexibleWidth]
 			loadingSpinner.startAnimating()
 			self.loadingSpinner = loadingSpinner
 		}
@@ -65,15 +67,24 @@ class BaseVC<T: BasePresenter>: UIViewController, BaseViewProtocol {
 		}
 	}
 	
-	func showSimpleError(_ errorText: String) {
-		let alert = UIAlertController(title: "Error", message: errorText, preferredStyle: .alert)
-		alert.addAction(UIAlertAction(title: "Retry", style: .default, handler: nil))
+	func showSimpleError(_ errorText: String, cancellable: Bool) {
+		let alert = UIAlertController(title: "ErrorTitle".localized(), message: errorText, preferredStyle: .alert)
+		let retryAction = UIAlertAction(title: "ButtonRetry".localized(), style: .default) { action in
+			self.presenter?.onRetryTapped()
+		}
+		alert.addAction(retryAction)
+		if cancellable {
+			let cancelAction = UIAlertAction(title: "ButtonCancel".localized(), style: .default) { action in
+				self.presenter?.onCancelTapped()
+			}
+			alert.addAction(cancelAction)
+		}
 		self.present(alert, animated: true, completion: nil)
 	}
 	
 	func showInfoPopup(_ info: String) {
 		let alert = UIAlertController(title: nil, message: info, preferredStyle: .alert)
-		alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+		alert.addAction(UIAlertAction(title: "ButtonOK".localized(), style: .default, handler: nil))
 		self.present(alert, animated: true, completion: nil)
 	}
 }
