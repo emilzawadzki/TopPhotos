@@ -7,7 +7,7 @@
 
 import UIKit
 
-protocol FilterViewDelegate {
+protocol FilterViewDelegate: NSObject {
 	func filterSelected(filterIndex: Int)
 }
 
@@ -16,13 +16,13 @@ class FilterControlView: UIView {
 	@IBOutlet var filterNameLabel: UILabel!
 	@IBOutlet var backgroundView: UIView!
 
-	var delegate: FilterViewDelegate?
+	weak var delegate: FilterViewDelegate?
 	var categoryIndex: Int = 0
 	
-	private var selectedTextColor = UIColor(named: "BackgroundCommon")
+	private var selectedTextColor = UIColor(named: "TextButtons")
 	private var unselectedTextColor = UIColor(named: "TextCommon")
-	private var selectedBackgroundColor = UIColor(named: "TextCommon")
-	private var unselectedBackgroundColor = UIColor(named: "ButtonBackground")
+	private var selectedBackgroundColor = UIColor(named: "ButtonBackground")
+	private var unselectedBackgroundColor = UIColor(named: "FilterBackground")
 	
 
 	@IBAction func filterButtonTouchDown(_ sender: UIButton) {

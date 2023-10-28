@@ -17,8 +17,13 @@
 "ButtonClose" = "Close";
 "ButtonSave" = "Save to photos";
 
+"Title" = "Top Photos";
+"SelectCategory" = "Select category:";
+"Photos" = "Photos:";
+"NoResults" = "No results";
+"AllPicturesFilter" = "All";
+
 "Author" = "Author";
 "MissingDescription" = "Missing description";
-
 "ImageSaveSuccess" = "Image saved";
 "ImageSaveFailure" = "Image save failed";

@@ -14,6 +14,7 @@ fileprivate let firstPageIndex = 1
 class ListPresenter: BasePresenter, FilterViewDelegate {
 	
 	private weak var view : ListViewProtocol?
+	private weak var coordinator : Coordinator?
 	
 	private var photos: [PhotoModel]?
 	private(set) var topics: [TopicModel]?
@@ -26,24 +27,26 @@ class ListPresenter: BasePresenter, FilterViewDelegate {
 		return photos?.count ?? 0
 	}
 	
-	init(view: ListViewProtocol) {
+	init(view: ListViewProtocol, coordinator : Coordinator) {
 		self.view = view
+		self.coordinator = coordinator
 		super.init()
 	}
 	
 	override func onViewDidAppear() {
 		super.onViewDidAppear()
 		
+		// do below code only once
 		guard !viewDidAlreadyAppeared else {
 			return
 		}
 		viewDidAlreadyAppeared.toggle()
 		
 		view?.showLoadingPopup()
-		
+		// get topics & photos
 		let group = DispatchGroup()
 		group.enter()
-		var photosError: Error?
+		var photosError: TopPhotosError?
 		apiConnector.getPhotos(topicID: nil, page: photosPage, completion: { [weak self] photos, error in
 			if let error {
 				photosError = error
@@ -55,10 +58,11 @@ class ListPresenter: BasePresenter, FilterViewDelegate {
 		group.enter()
 		apiConnector.getTopics(completion: { [weak self] topics, error in
 			if var topics {
-				// custom topic for all pictures
-				let topicAll = TopicModel(id: topicAllPicturesID, title: "All")
+				// add custom topic for all pictures
+				let topicAll = TopicModel(id: topicAllPicturesID, title: "AllPicturesFilter".localized())
 				topics.insert(topicAll, at: allFiltersIndex)
 				self?.topics = topics
+				self?.selectedTopic = topicAll
 			}
 			group.leave()
 		})
@@ -66,8 +70,7 @@ class ListPresenter: BasePresenter, FilterViewDelegate {
 		group.notify(queue: .main) {
 			self.view?.hideLoadingPopup()
 			if let photosError {
-				//TODO: add string to the error
-				self.view?.showSimpleError("Error", cancellable: false)
+				self.view?.showSimpleError(photosError.customMessage, cancellable: false)
 			} else if let photos = self.photos, photos.count > 0 {
 				self.view?.reloadList()
 			} else {
@@ -80,22 +83,31 @@ class ListPresenter: BasePresenter, FilterViewDelegate {
 		}
 	}
 	
-	func getImageForPhotoCell(cell: MiniPhotoCell, index: Int) {
+	override func onRetryTapped() {
+		loadMorePhotos()
+	}
+	
+	func getPhotoID(index: Int) -> String? {
+		guard let photos, photos.count > index else {
+			return nil
+		}
+		let photoModel = photos[index]
+		return photoModel.id
+	}
+	
+	func getImage(index: Int, completionBlock: @escaping (UIImage?) -> Void) {
 		guard let photos, photos.count > index else {
 			return
 		}
 		let photoModel = photos[index]
-		cell.photoID = photoModel.id
-		cell.photoImage.image = nil
 		guard let imagePath = photoModel.smallImagePath, let url = URL(string: imagePath) else {
 			return
 		}
-		//TODO: add delegate for cell
-		DispatchQueue.global().async {
-			// check ID in case if cell was reused for other image
-			if let data = try? Data(contentsOf: url), cell.photoID == photoModel.id {
+		// get image in async queue
+		DispatchQueue.global(qos: .background).async {
+			if let data = try? Data(contentsOf: url) {
 				DispatchQueue.main.async {
-					cell.photoImage.image = UIImage(data: data)
+					completionBlock(UIImage(data: data))
 				}
 			}
 		}
@@ -107,14 +119,7 @@ class ListPresenter: BasePresenter, FilterViewDelegate {
 		}
 		let photoModel = photos[index]
 		
-		if let detailsVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "detailsVC") as? DetailsVC {
-			detailsVC.presenter = DetailsPresenter(view: detailsVC, photoModel: photoModel)
-			detailsVC.modalPresentationStyle = .fullScreen
-			//TODO: add coordinator
-			if let appDelegate = UIApplication.shared.delegate as? AppDelegate, let root = appDelegate.window?.rootViewController {
-				root.present(detailsVC, animated: true)
-			}
-		}
+		coordinator?.presentDetailsView(photoID: photoModel.id)
 	}
 	
 	func filterSelected(filterIndex: Int) {
@@ -123,22 +128,16 @@ class ListPresenter: BasePresenter, FilterViewDelegate {
 		}
 		let newTopic = topics[filterIndex]
 		
-		if newTopic.id == topicAllPicturesID {
-			guard selectedTopic != nil else {
-				return
-			}
-			selectedTopic = nil
-		} else {
-			guard newTopic.id != selectedTopic?.id else {
-				return
-			}
-			selectedTopic = newTopic
+		guard newTopic.id != selectedTopic?.id else {
+			//don't reload list for the same topic
+			return
 		}
+		selectedTopic = newTopic
 		view?.showFilterAsSelected(filterIndex: filterIndex)
 		photosPage = firstPageIndex
-		photos = []
+		photos = [] // remove photos from previous topic
 		view?.scrollToTop()
-		getMorePhotos()
+		loadMorePhotos()
 		
 	}
 	
@@ -147,20 +146,27 @@ class ListPresenter: BasePresenter, FilterViewDelegate {
 		guard let photos, photos.count - 1 == index else {
 			return
 		}
-		photosPage += 1
-		getMorePhotos()
+		photosPage += 1 // load photos from the next page
+		loadMorePhotos()
 	}
 	
-	func getMorePhotos() {
+	func loadMorePhotos() {
 		view?.showLoadingPopup()
-		apiConnector.getPhotos(topicID: selectedTopic?.id, page: photosPage, completion: { [weak self] photos, error in
-			if let error {
-				//TODO:
-			} else if let photos {
-				DispatchQueue.main.async {
-					self?.view?.hideLoadingPopup()
-					self?.photos?.append(contentsOf: photos)
-					self?.view?.reloadList()
+		// the app should use nil as topic ID, when all pictures filter is selected
+		let topicID: String? = selectedTopic?.id != topicAllPicturesID ? selectedTopic?.id : nil
+		apiConnector.getPhotos(topicID: topicID, page: photosPage, completion: { [weak self] photos, error in
+			guard let self else {
+				return
+			}
+			DispatchQueue.main.async {
+				self.view?.hideLoadingPopup()
+				if let error {
+					self.view?.showSimpleError(error.customMessage, cancellable: false)
+				} else if let photos, photos.count > 0 {
+					self.photos?.append(contentsOf: photos)
+					self.view?.reloadList()
+				} else {
+					self.view?.showEmptyScreen()
 				}
 			}
 		})

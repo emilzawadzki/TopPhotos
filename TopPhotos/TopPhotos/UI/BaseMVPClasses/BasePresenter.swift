@@ -7,7 +7,7 @@
 
 import Foundation
 
-class BasePresenter {
+class BasePresenter: NSObject {
 	
 	/// default value but can be replaced for tests
 	internal var apiConnector: ApiConnectorProtocol = ApiConnector()

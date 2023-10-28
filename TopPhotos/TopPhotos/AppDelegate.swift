@@ -11,15 +11,13 @@ import UIKit
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
 	var window: UIWindow?
+	private var coordinator: Coordinator?
 
 	func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
 		// Override point for customization after application launch.
 		
-		let mainVC = UIStoryboard(name: "Main", bundle: nil).instantiateInitialViewController()
-		if let listVC = mainVC as? ListVC {
-			listVC.presenter = ListPresenter(view: listVC)
-		}
-		window?.rootViewController = mainVC
+		coordinator = Coordinator()
+		coordinator?.startMainFlow(inWindow: window)
 		
 		return true
 	}

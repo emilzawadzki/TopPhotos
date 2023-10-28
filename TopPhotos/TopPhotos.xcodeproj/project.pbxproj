@@ -42,6 +42,8 @@
 		20F7A8712AED17A200F14173 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 20F7A8702AED17A100F14173 /* Localizable.strings */; };
 		20F7A8732AED18D400F14173 /* String+Localized.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20F7A8722AED18D400F14173 /* String+Localized.swift */; };
 		20F7A8762AED21DE00F14173 /* Reachability.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20F7A8752AED21DE00F14173 /* Reachability.swift */; };
+		20F7A8792AED71A600F14173 /* GradientView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20F7A8782AED71A600F14173 /* GradientView.swift */; };
+		20F7A87B2AED74A700F14173 /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20F7A87A2AED74A700F14173 /* Coordinator.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -101,6 +103,8 @@
 		20F7A8702AED17A100F14173 /* Localizable.strings */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; path = Localizable.strings; sourceTree = "<group>"; };
 		20F7A8722AED18D400F14173 /* String+Localized.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Localized.swift"; sourceTree = "<group>"; };
 		20F7A8752AED21DE00F14173 /* Reachability.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Reachability.swift; sourceTree = "<group>"; };
+		20F7A8782AED71A600F14173 /* GradientView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradientView.swift; sourceTree = "<group>"; };
+		20F7A87A2AED74A700F14173 /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -195,7 +199,8 @@
 		20F7A8382AE99EA100F14173 /* UI */ = {
 			isa = PBXGroup;
 			children = (
-				20F7A8442AE9B01200F14173 /* BaseClasses */,
+				20F7A8772AED718D00F14173 /* Common */,
+				20F7A8442AE9B01200F14173 /* BaseMVPClasses */,
 				20F7A8412AE9AFF400F14173 /* Details */,
 				20F7A8392AE99F5400F14173 /* List */,
 				20F7A80B2AE99A1200F14173 /* Main.storyboard */,
@@ -238,14 +243,14 @@
 			path = Details;
 			sourceTree = "<group>";
 		};
-		20F7A8442AE9B01200F14173 /* BaseClasses */ = {
+		20F7A8442AE9B01200F14173 /* BaseMVPClasses */ = {
 			isa = PBXGroup;
 			children = (
 				20F7A8452AE9B02000F14173 /* BaseVC.swift */,
 				20F7A8472AE9B02B00F14173 /* BasePresenter.swift */,
 				20F7A8492AE9B0C600F14173 /* BaseViewProtocol.swift */,
 			);
-			path = BaseClasses;
+			path = BaseMVPClasses;
 			sourceTree = "<group>";
 		};
 		20F7A8592AEAE16300F14173 /* FilterControl */ = {
@@ -283,6 +288,15 @@
 				20F7A8572AE9D97900F14173 /* TopicModel.swift */,
 			);
 			path = Models;
+			sourceTree = "<group>";
+		};
+		20F7A8772AED718D00F14173 /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				20F7A8782AED71A600F14173 /* GradientView.swift */,
+				20F7A87A2AED74A700F14173 /* Coordinator.swift */,
+			);
+			path = Common;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -433,6 +447,7 @@
 				20F7A8432AE9B00000F14173 /* ListPresenter.swift in Sources */,
 				20F7A86A2AEBF1A800F14173 /* ApiConnectorProtocol.swift in Sources */,
 				20F7A8462AE9B02000F14173 /* BaseVC.swift in Sources */,
+				20F7A8792AED71A600F14173 /* GradientView.swift in Sources */,
 				20F7A8582AE9D97900F14173 /* TopicModel.swift in Sources */,
 				20F7A8762AED21DE00F14173 /* Reachability.swift in Sources */,
 				20F7A8062AE99A1200F14173 /* AppDelegate.swift in Sources */,
@@ -440,6 +455,7 @@
 				20F7A86F2AED16EF00F14173 /* TopPhotosErrors.swift in Sources */,
 				20F7A8522AE9BBD800F14173 /* DetailsVC.swift in Sources */,
 				20F7A8562AE9C5C400F14173 /* UserModel.swift in Sources */,
+				20F7A87B2AED74A700F14173 /* Coordinator.swift in Sources */,
 				20F7A8732AED18D400F14173 /* String+Localized.swift in Sources */,
 				20F7A8502AE9BBAD00F14173 /* DetailsPresenter.swift in Sources */,
 			);
@@ -624,6 +640,7 @@
 				DEVELOPMENT_TEAM = 6523XHZW9R;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = TopPhotos/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = "Top Photos";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
@@ -652,6 +669,7 @@
 				DEVELOPMENT_TEAM = 6523XHZW9R;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = TopPhotos/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = "Top Photos";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;

@@ -11,13 +11,13 @@ import UIKit
 class DetailsPresenter: BasePresenter {
 	
 	private weak var view : DetailsViewProtocol?
-	private var photoModel: PhotoModel
+	private var photoID: String
 	private var loadedImage: UIImage?
 	private var imageSaver: ImageSaver?
 	
-	init(view: DetailsViewProtocol, photoModel: PhotoModel) {
+	init(view: DetailsViewProtocol, photoID: String) {
 		self.view = view
-		self.photoModel = photoModel
+		self.photoID = photoID
 		super.init()
 	}
 	
@@ -39,7 +39,7 @@ class DetailsPresenter: BasePresenter {
 	
 	private func loadDetails() {
 		view?.showLoadingPopup()
-		apiConnector.getPhotoDetails(id:photoModel.id, completion: { [weak self] photoDetails, error in
+		apiConnector.getPhotoDetails(id:photoID, completion: { [weak self] photoDetails, error in
 			DispatchQueue.main.async {
 				self?.view?.hideLoadingPopup()
 				if let error {
