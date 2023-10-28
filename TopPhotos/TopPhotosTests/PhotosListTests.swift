@@ -16,7 +16,7 @@ final class PhotosListTests: XCTestCase {
 		guard let listVC = UIStoryboard(name: "Main", bundle: nil).instantiateInitialViewController() as? ListVC else {
 			return
 		}
-		listPresenter = ListPresenter(view: listVC)
+		listPresenter = ListPresenter(view: listVC, coordinator: Coordinator())
 		listPresenter?.apiConnector = MockedApiConnector()
 	}
 
@@ -57,7 +57,7 @@ final class PhotosListTests: XCTestCase {
 		listPresenter.onViewDidAppear()
 		sleep(1)
 		// no filter is selected at the baginning
-		XCTAssertNil(listPresenter.selectedTopic)
+		XCTAssertEqual(listPresenter.selectedTopic?.id, topicAllPicturesID)
 		// select any filter
 		XCTAssertGreaterThan(listPresenter.topics?.count ?? 0, 1)
 		listPresenter.filterSelected(filterIndex: 1)
