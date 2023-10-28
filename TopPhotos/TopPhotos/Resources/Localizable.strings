@@ -1,0 +1,15 @@
+/* 
+  Localizable.strings
+  TopPhotos
+
+  Created by Emil Zawadzki on 28/10/2023.
+  
+*/
+
+"ErrorTitle" = "Error";
+"ErrorNoInternetConnection" = "No internet connection";
+"ErrorConnecitonIssue" = "Downloading data failed :(";
+"ErrorNoContent" = "Empty content";
+
+"ButtonRetry" = "Retry";
+"ButtonOK" = "OK";
